@@ -1,0 +1,212 @@
+.root {
+    -wood-dark: #5a3a22;
+    -wood-darker: #3d2716;
+    -ink: #4a2f1a;
+    -accent: #7a4a26;
+    -fx-font-size: 13px;
+}
+
+.game {
+    -fx-background-color: radial-gradient(center 40% 40%, radius 90%, #3b281a, #1c120b);
+    -fx-padding: 24;
+}
+
+/* Damier */
+
+.board {
+    -fx-background-color: linear-gradient(to bottom right, #6e4829, -wood-darker);
+    -fx-background-radius: 8;
+    -fx-padding: 10 14 6 6;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 24, 0.2, 0, 6);
+}
+
+.coordinate {
+    -fx-text-fill: #e8d3b0;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 8 4 8;
+}
+
+.tile.light {
+    -fx-background-color: linear-gradient(to bottom right, #f0d5ab, #ddb984);
+}
+
+.tile.dark {
+    -fx-background-color: linear-gradient(to bottom right, #a8714a, #8a5732);
+}
+
+.tile.light.selected {
+    -fx-background-color: linear-gradient(to bottom right, #f0d5ab, #ddb984), rgba(255, 200, 60, 0.55);
+}
+
+.tile.dark.selected {
+    -fx-background-color: linear-gradient(to bottom right, #a8714a, #8a5732), rgba(255, 200, 60, 0.55);
+}
+
+.tile.target {
+    -fx-cursor: hand;
+}
+
+.target-marker {
+    -fx-fill: rgba(46, 110, 52, 0.75);
+    -fx-stroke: rgba(255, 255, 255, 0.6);
+    -fx-stroke-width: 2;
+}
+
+/* Pions */
+
+.piece {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.55), 6, 0.2, 1, 3);
+}
+
+.piece.playable {
+    -fx-cursor: hand;
+}
+
+.piece.playable:hover {
+    -fx-effect: dropshadow(gaussian, #ffd76a, 16, 0.55, 0, 0);
+}
+
+.piece-white .piece-body {
+    -fx-fill: radial-gradient(center 35% 30%, radius 80%, #fffdf6, #eadcbf 65%, #c9b48d);
+    -fx-stroke: #9c8664;
+    -fx-stroke-width: 1.5;
+}
+
+.piece-black .piece-body {
+    -fx-fill: radial-gradient(center 35% 30%, radius 80%, #6a625a, #2c2723 60%, #121010);
+    -fx-stroke: #050404;
+    -fx-stroke-width: 1.5;
+}
+
+.piece-rim {
+    -fx-fill: transparent;
+    -fx-stroke-width: 1.5;
+}
+
+.piece-white .piece-rim {
+    -fx-stroke: rgba(90, 60, 30, 0.25);
+}
+
+.piece-black .piece-rim {
+    -fx-stroke: rgba(255, 255, 255, 0.15);
+}
+
+.piece-white .piece-mark {
+    -fx-fill: #8b5e34;
+}
+
+.piece-black .piece-mark {
+    -fx-fill: #e0c79a;
+}
+
+.piece-crown, .piece-white .piece-crown, .piece-black .piece-crown {
+    -fx-fill: linear-gradient(to bottom, #f3cf55, #c08f17);
+    -fx-stroke: #7a5a0c;
+    -fx-stroke-width: 1;
+}
+
+/* Panneau latéral */
+
+.side-panel {
+    -fx-background-color: linear-gradient(to bottom, #f8eedc, #ead9bb);
+    -fx-background-radius: 10;
+    -fx-padding: 22;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.15, 0, 5);
+}
+
+.title {
+    -fx-font-family: "Serif";
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -ink;
+}
+
+.turn-label {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -ink;
+}
+
+.turn-indicator {
+    -fx-stroke-width: 1.5;
+}
+
+.turn-indicator.white {
+    -fx-fill: #fffdf6;
+    -fx-stroke: #9c8664;
+}
+
+.turn-indicator.black {
+    -fx-fill: #2c2723;
+    -fx-stroke: #050404;
+}
+
+.hint {
+    -fx-text-fill: #9a3412;
+    -fx-font-weight: bold;
+}
+
+.orientation-section {
+    -fx-background-color: rgba(255, 200, 60, 0.25);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(192, 143, 23, 0.6);
+    -fx-border-radius: 8;
+    -fx-padding: 12;
+}
+
+.section-title {
+    -fx-font-weight: bold;
+    -fx-text-fill: -ink;
+}
+
+.rules {
+    -fx-text-fill: #7a6248;
+    -fx-font-size: 12px;
+}
+
+/* Boutons */
+
+.button {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-padding: 8 12 8 12;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.primary-button {
+    -fx-background-color: -accent;
+    -fx-text-fill: white;
+}
+
+.primary-button:hover {
+    -fx-background-color: #8d5a33;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-border-color: -accent;
+    -fx-text-fill: -accent;
+}
+
+.secondary-button:hover {
+    -fx-background-color: rgba(122, 74, 38, 0.1);
+}
+
+.secondary-button:disabled {
+    -fx-opacity: 0.4;
+}
+
+.orientation-button {
+    -fx-background-color: white;
+    -fx-border-color: #d6c3a3;
+    -fx-text-fill: -ink;
+    -fx-alignment: center-left;
+    -fx-graphic-text-gap: 12;
+}
+
+.orientation-button:hover {
+    -fx-border-color: -accent;
+    -fx-background-color: #fffaf0;
+}

@@ -6,9 +6,11 @@ import java.util.Map;
 import java.util.Set;
 
 public interface MoveValidator {
-    boolean isMoveValid(Piece piece, Point from, Point to, Map<Point, Piece> boardState);
-    Set<Point> getValidMoves(Piece piece, Point position, Map<Point, Piece> boardState);
-    Set<Point> getCaptureMoves(Piece piece, Point position, Map<Point, Piece> boardState);
+
+    /**
+     * Coups jouables par {@code color}, contraintes de prise obligatoire et de rafle maximale déjà appliquées.
+     */
+    Set<Move> getLegalMoves(PieceColor color, Map<Point, Piece> boardState);
+
     boolean canBePromoted(Piece piece, Point to);
-    void capture(Piece piece, Point from, Point to, Map<Point, Piece> boardState);
 }

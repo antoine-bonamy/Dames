@@ -6,18 +6,10 @@ public class Piece {
 
     private PieceColor color;
     private PieceType type;
-    private boolean isActive;
 
     public Piece(PieceColor color, PieceType type) {
         this.color = color;
         this.type = type;
-        this.isActive = true;
-    }
-
-    public Piece(PieceColor color, PieceType type, boolean isActive) {
-        this.color = color;
-        this.type = type;
-        this.isActive = isActive;
     }
 
     public void makeKing() {
@@ -40,14 +32,6 @@ public class Piece {
         this.type = type;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -65,7 +49,6 @@ public class Piece {
         return "Piece{" +
                 "color=" + color +
                 ", type=" + type +
-                ", isActive=" + isActive +
                 '}';
     }
 }

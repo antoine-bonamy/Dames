@@ -1,6 +1,7 @@
 package fr.bonamy.dame_alliance;
 
 import fr.bonamy.dame_alliance.controller.GameController;
+import fr.bonamy.dame_alliance.model.AllianceMoveValidator;
 import fr.bonamy.dame_alliance.model.Game;
 import fr.bonamy.dame_alliance.view.BoardView;
 import fr.bonamy.dame_alliance.view.GameView;
@@ -8,25 +9,24 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.util.Objects;
 
 public class GameApp extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        GameController gameController = setupGame(stage);
-        stage.show();
-    }
 
-    private GameController setupGame(Stage stage) {
-        Game game = new Game();
+    private static final String STYLESHEET_PATH = "/css/style.css";
+
+    @Override
+    public void start(Stage stage) {
+        Game game = new Game(new AllianceMoveValidator());
         GameView gameView = new GameView(new BoardView());
-        GameController gameController = new GameController(game, gameView);
-        Scene scene = new Scene(gameView, 800, 800);
+        new GameController(game, gameView);
+        Scene scene = new Scene(gameView);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(STYLESHEET_PATH)).toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Dame Alliance");
-        stage.setMinHeight(800);
-        stage.setMinWidth(800);
-        return gameController;
+        stage.show();
+        stage.setMinWidth(stage.getWidth());
+        stage.setMinHeight(stage.getHeight());
     }
 
     public static void main(String[] args) {
