@@ -61,12 +61,17 @@ public class BoardView extends GridPane {
             for (TileView tile : column) {
                 tile.setSelected(false);
                 tile.setTarget(false);
+                tile.setLastMove(false);
             }
         }
     }
 
     public void markSelected(Collection<Point> positions) {
         positions.forEach(position -> tileAt(position).setSelected(true));
+    }
+
+    public void markLastMove(Collection<Point> positions) {
+        positions.forEach(position -> tileAt(position).setLastMove(true));
     }
 
     public void markTargets(Collection<Point> positions) {
@@ -123,6 +128,10 @@ public class BoardView extends GridPane {
 
         void setSelected(boolean selected) {
             toggleStyleClass("selected", selected);
+        }
+
+        void setLastMove(boolean lastMove) {
+            toggleStyleClass("last-move", lastMove);
         }
 
         void setTarget(boolean target) {

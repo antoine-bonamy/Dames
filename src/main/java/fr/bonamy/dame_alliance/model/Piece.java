@@ -12,6 +12,10 @@ public class Piece {
         this.type = type;
     }
 
+    public Piece copy() {
+        return new Piece(color, type);
+    }
+
     public void makeKing() {
         this.type = PieceType.KING;
     }

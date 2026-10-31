@@ -105,6 +105,34 @@ class GameTest {
     }
 
     @Test
+    void copyIsIndependentFromOriginal() {
+        Game game = new Game(validator);
+        Game copy = game.copy();
+
+        copy.play(copy.findMove(List.of(new Point(3, 2), new Point(3, 3))).orElseThrow());
+        copy.orient(PieceType.ORTHOGONAL);
+
+        assertEquals(PieceType.DIAGONAL, game.getPieces().get(new Point(3, 2)).getType());
+        assertFalse(game.getPieces().containsKey(new Point(3, 3)));
+        assertEquals(PieceColor.WHITE, game.getCurrentPlayer());
+        assertEquals(PieceColor.BLACK, copy.getCurrentPlayer());
+    }
+
+    @Test
+    void restoreReplacesPositionAndTurn() {
+        Game game = new Game(validator);
+
+        game.restore(Map.of(
+                new Point(2, 2), new Piece(PieceColor.WHITE, PieceType.KING),
+                new Point(5, 5), new Piece(PieceColor.BLACK, PieceType.DIAGONAL)), PieceColor.BLACK);
+
+        assertEquals(2, game.getPieces().size());
+        assertEquals(PieceColor.BLACK, game.getCurrentPlayer());
+        assertEquals(GamePhase.PLAYING, game.getPhase());
+        assertNull(game.getWinner());
+    }
+
+    @Test
     void kingCountIsUnavailableWhilePawnsRemain() {
         Game game = new Game(validator);
 

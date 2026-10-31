@@ -34,11 +34,41 @@ public class Game {
      */
     public Game(MoveValidator moveValidator, Map<Point, Piece> pieces, PieceColor firstPlayer) {
         this.moveValidator = moveValidator;
-        start(new HashMap<>(pieces), firstPlayer);
+        start(copyPieces(pieces), firstPlayer);
+    }
+
+    private Game(Game other) {
+        this.moveValidator = other.moveValidator;
+        this.pieces = copyPieces(other.pieces);
+        this.currentPlayer = other.currentPlayer;
+        this.phase = other.phase;
+        this.legalMoves = other.legalMoves;
+        this.pieceToOrient = other.pieceToOrient;
+        this.winner = other.winner;
+    }
+
+    /**
+     * Copie indépendante, pièces comprises (elles sont mutables), pour simuler des coups sans toucher à la partie.
+     */
+    public Game copy() {
+        return new Game(this);
+    }
+
+    private static Map<Point, Piece> copyPieces(Map<Point, Piece> pieces) {
+        Map<Point, Piece> copy = new HashMap<>();
+        pieces.forEach((position, piece) -> copy.put(position, piece.copy()));
+        return copy;
     }
 
     public void reset() {
         start(initialPieces(), PieceColor.WHITE);
+    }
+
+    /**
+     * Remplace la partie en cours par une position donnée, en début de tour de {@code player}.
+     */
+    public void restore(Map<Point, Piece> pieces, PieceColor player) {
+        start(copyPieces(pieces), player);
     }
 
     private void start(Map<Point, Piece> pieces, PieceColor firstPlayer) {
@@ -148,6 +178,10 @@ public class Game {
         } else {
             phase = GamePhase.PLAYING;
         }
+    }
+
+    public Set<Move> getLegalMoves() {
+        return Collections.unmodifiableSet(legalMoves);
     }
 
     public Map<Point, Piece> getPieces() {

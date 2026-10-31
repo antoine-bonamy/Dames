@@ -35,6 +35,14 @@
     -fx-background-color: linear-gradient(to bottom right, #a8714a, #8a5732);
 }
 
+.tile.light.last-move {
+    -fx-background-color: linear-gradient(to bottom right, #f0d5ab, #ddb984), rgba(155, 190, 40, 0.45);
+}
+
+.tile.dark.last-move {
+    -fx-background-color: linear-gradient(to bottom right, #a8714a, #8a5732), rgba(155, 190, 40, 0.45);
+}
+
 .tile.light.selected {
     -fx-background-color: linear-gradient(to bottom right, #f0d5ab, #ddb984), rgba(255, 200, 60, 0.55);
 }
@@ -160,6 +168,31 @@
     -fx-text-fill: -ink;
 }
 
+.thinking {
+    -fx-text-fill: #7a4a26;
+    -fx-font-style: italic;
+}
+
+.thinking-box .progress-indicator {
+    -fx-progress-color: #7a4a26;
+}
+
+.settings-section {
+    -fx-border-color: rgba(122, 74, 38, 0.25) transparent transparent transparent;
+    -fx-padding: 12 0 0 0;
+}
+
+.settings-section .label, .settings-section .check-box {
+    -fx-text-fill: -ink;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #d6c3a3;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
 .rules {
     -fx-text-fill: #7a6248;
     -fx-font-size: 12px;
@@ -209,4 +242,9 @@
 .orientation-button:hover {
     -fx-border-color: -accent;
     -fx-background-color: #fffaf0;
+}
+
+.notice {
+    -fx-text-fill: #2f6b2f;
+    -fx-font-size: 12px;
 }
